@@ -50,11 +50,11 @@ function dtz_day(date) {
 	return date.getUTCDate();
 }
 
-function dtz_Day(date) {
+function dtz_day_short(date) {
 	return locale.days[date.getUTCDay()].slice(0,3);
 }
 
-function dtz_DAY(date) {
+function dtz_dat_long(date) {
 	return locale.days[date.getUTCDay()];
 }
 
@@ -62,11 +62,11 @@ function dtz_month(date) {
 	return date.getUTCMonth() + 1;
 }
 
-function dtz_Month(date) {
+function dtz_month_short(date) {
 	return locale.months[date.getUTCMonth()].slice(0,3);
 }
 
-function dtz_MONTH(date) {
+function dtz_month_long(date) {
 	return locale.months[date.getUTCMonth()];
 }
 
@@ -87,16 +87,16 @@ function factory(fnc) {
 }
 
 module.exports = {
-	dtz_DAY: factory(dtz_DAY),
-	dtz_Day: factory(dtz_Day),
-	dtz_MONTH: factory(dtz_MONTH),
-	dtz_Month: factory(dtz_Month),
 	dtz_date: factory(dtz_date),
 	dtz_datetime: factory(dtz_datetime),
 	dtz_datetime_tz: factory(dtz_datetime_tz),
 	dtz_datetime_long: factory(dtz_datetime_long),
 	dtz_day: factory(dtz_day),
+	dtz_day_short: factory(dtz_day_short),
+	dtz_day_long: factory(dtz_day_long),
 	dtz_month: factory(dtz_month),
+	dtz_month_short: factory(dtz_month_short),
+	dtz_month_long: factory(dtz_month_long),
 	dtz_time: factory(dtz_time),
 	dtz_time_tz: factory(dtz_time_tz)
 };

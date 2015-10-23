@@ -41,11 +41,11 @@ function d_day(date) {
 	return date.getDate();
 }
 
-function d_Day(date) {
+function d_day_short(date) {
 	return locale.days[date.getDay()].slice(0,3);
 }
 
-function d_DAY(date) {
+function d_day_long(date) {
 	return locale.days[date.getDay()];
 }
 
@@ -53,11 +53,11 @@ function d_month(date) {
 	return date.getMonth() + 1;
 }
 
-function d_Month(date) {
+function d_month_short(date) {
 	return locale.months[date.getMonth()].slice(0,3);
 }
 
-function d_MONTH(date) {
+function d_month_long(date) {
 	return locale.months[date.getMonth()];
 }
 
@@ -70,14 +70,14 @@ function factory(fnc) {
 }
 
 module.exports = {
-	d_DAY: factory(d_DAY),
-	d_Day: factory(d_Day),
-	d_MONTH: factory(d_MONTH),
-	d_Month: factory(d_Month),
 	d_date: factory(d_date),
 	d_datetime: factory(d_datetime),
 	d_datetime_long: factory(d_datetime_long),
 	d_day: factory(d_day),
+	d_day_long: factory(d_day_long),
+	d_day_short: factory(d_day_short),
 	d_month: factory(d_month),
-	d_time: factory(d_time),
+	d_month_long: factory(d_month_long),
+	d_month_short: factory(d_month_short),
+	d_time: factory(d_time)
 };
