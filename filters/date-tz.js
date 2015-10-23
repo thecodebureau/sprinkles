@@ -54,7 +54,7 @@ function dtz_day_short(date) {
 	return locale.days[date.getUTCDay()].slice(0,3);
 }
 
-function dtz_dat_long(date) {
+function dtz_day_long(date) {
 	return locale.days[date.getUTCDay()];
 }
 
