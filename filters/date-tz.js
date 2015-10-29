@@ -1,6 +1,6 @@
-var localeString = ((typeof document !== 'undefined' ? document.documentElement.lang : process.env.NODE_LANG) || 'en').split('-')[0].toLowerCase();
 
-var locale = require('../util/locales')[localeString];
+var locales = require('../util/locales'),
+	locale;
 
 function twoDigits(val) {
 	return val >= 10 ? val : '0' + val;
@@ -71,7 +71,11 @@ function dtz_month_long(date) {
 }
 
 function factory(fnc) {
-	return function(date) {
+	return function(date, context) {
+
+		if(!locale) 
+			locale = locales[(context.get('lang') || 'en').split('-')[0].toLowerCase()];
+
 		if(!_.isDate(date)) date = new Date(date);
 
 		if(!date._tz) {
