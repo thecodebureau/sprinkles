@@ -28,6 +28,8 @@ module.exports = function(chunk, context) {
 		pages[page].current = true;
 
 	return {
+		firstIndex: page * perPage + 1,
+		lastIndex: Math.min((page + 1) * perPage, count),
 		pages: pages,
 		prev: _.extend(pages[page - 1], { rel: 'prev' }),
 		next: _.extend(pages[page + 1], { rel: 'next' }),
