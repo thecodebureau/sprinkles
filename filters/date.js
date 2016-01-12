@@ -1,4 +1,4 @@
-var localeString = ((typeof document !== 'undefined' ? document.documentElement.lang : process.env.NODE_LANG) || 'en').split('-')[0].toLowerCase();
+var localeString = ((typeof document !== 'undefined' ? document.documentElement.lang : process.env.NODE_LANG || LANG) || 'en').split('-')[0].toLowerCase();
 
 var locale = require('../util/locales')[localeString];
 
@@ -53,12 +53,20 @@ function d_month(date) {
 	return date.getMonth() + 1;
 }
 
+function d_month_two_digit(date) {
+	return twoDigits(date.getMonth() + 1);
+}
+
 function d_month_short(date) {
 	return locale.months[date.getMonth()].slice(0,3);
 }
 
 function d_month_long(date) {
 	return locale.months[date.getMonth()];
+}
+
+function d_year(date) {
+	return date.getFullYear();
 }
 
 function factory(fnc) {
@@ -77,7 +85,9 @@ module.exports = {
 	d_day_long: factory(d_day_long),
 	d_day_short: factory(d_day_short),
 	d_month: factory(d_month),
+	d_month_two_digit: factory(d_month_two_digit),
 	d_month_long: factory(d_month_long),
 	d_month_short: factory(d_month_short),
+	d_year: factory(d_year),
 	d_time: factory(d_time)
 };
