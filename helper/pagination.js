@@ -1,7 +1,7 @@
 module.exports = function(chunk, context) {
 	var pages = [],
 		count = context.get('totalCount'),
-		query = context.get('query') || '',
+		query = context.get('query') || {},
 		page = +query.page || 0,
 		//page = +_.last(query.match(/(^|&)page=(\d+)/)) || 0,
 		perPage = +query.limit || context.get('perPage'),
