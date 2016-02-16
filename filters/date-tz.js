@@ -15,7 +15,7 @@ function dtz_datetime_long(date) {
 		[ date.getUTCHours(),
 			date.getUTCMinutes() 
 		].map(twoDigits).join(':'),
-		date._tz[0]
+		date.tz[0]
 	]).join(' ');
 }
 
@@ -24,7 +24,7 @@ function dtz_datetime(date) {
 }
 
 function dtz_datetime_tz(date) {
-	return dtz_datetime(date) + (date._tz[0] ? ' ' + date._tz[0] : '');
+	return dtz_datetime(date) + (date.tz[0] ? ' ' + date.tz[0] : '');
 }
 
 function dtz_date(date) {
@@ -43,7 +43,7 @@ function dtz_time(date) {
 }
 
 function dtz_time_tz(date) {
-	return dtz_time(date) + (date._tz[0] ? ' ' + date._tz[0] : '');
+	return dtz_time(date) + (date.tz[0] ? ' ' + date.tz[0] : '');
 }
 
 function dtz_day(date) {
@@ -78,12 +78,12 @@ function factory(fnc) {
 
 		if(!_.isDate(date)) date = new Date(date);
 
-		if(!date._tz) {
+		if(!date.tz) {
 			var offset = date.getTimezoneOffset();
 
 			date = new Date(date.getTime() - offset * 60000);
 
-			date._tz = [ '', '', offset ];
+			date.tz = [ '', '', offset ];
 		}
 
 		return fnc(date);
