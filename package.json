@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/thecodebureau/sprinkles/issues"
   },
-  "homepage": "https://github.com/thecodebureau/sprinkles#readme"
+  "homepage": "https://github.com/thecodebureau/sprinkles#readme",
+  "dependencies": {
+    "easy-tz": "0.0.3"
+  }
 }
