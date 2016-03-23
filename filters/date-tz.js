@@ -15,7 +15,7 @@ function dtz_datetime_long(date) {
 		[ date.getUTCHours(),
 			date.getUTCMinutes() 
 		].map(twoDigits).join(':'),
-		date.tz[0]
+		date.tz[1]
 	]).join(' ');
 }
 
@@ -24,7 +24,7 @@ function dtz_datetime(date) {
 }
 
 function dtz_datetime_tz(date) {
-	return dtz_datetime(date) + (date.tz[0] ? ' ' + date.tz[0] : '');
+	return dtz_datetime(date) + (date.tz[1] ? ' ' + date.tz[1] : '');
 }
 
 function dtz_date(date) {
@@ -43,7 +43,7 @@ function dtz_time(date) {
 }
 
 function dtz_time_tz(date) {
-	return dtz_time(date) + (date.tz[0] ? ' ' + date.tz[0] : '');
+	return dtz_time(date) + (date.tz[1] ? ' ' + date.tz[1] : '');
 }
 
 function dtz_day(date) {
