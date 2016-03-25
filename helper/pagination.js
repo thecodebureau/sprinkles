@@ -15,7 +15,7 @@ module.exports = function(chunk, context) {
 	//	return str.indexOf('page=') && _.last(str) != '=';
 	//}).join('&');
 	
-	query = _.pairs(_.omit(query, 'page')).map(function(arr) {
+	query = _.toPairs(_.omit(query, 'page')).map(function(arr) {
 		return arr.map(encodeURIComponent).join('=');
 	}).join('&');
 
