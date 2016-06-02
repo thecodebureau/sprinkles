@@ -1,14 +1,12 @@
 'use strict';
 
-var localeString = ((typeof document !== 'undefined' ? document.documentElement.lang : process.env.NODE_LANG || LANG) || 'en').split('-')[0].toLowerCase();
-
-var locale = require('../util/locales')[localeString];
+var defaultLanguage = ((typeof document !== 'undefined' ? document.documentElement.lang : process.env.NODE_LANG) || 'en').split('-')[0].toLowerCase();
 
 function twoDigits(val) {
   return val >= 10 ? val : '0' + val;
 }
 
-function d_datetime_long(date) {
+function d_datetime_long(date, locale) {
   return _.compact([
     locale.days[date.getDay()].slice(0, 3),
     date.getDate(),
@@ -52,11 +50,11 @@ function d_day(date) {
   return date.getDate();
 }
 
-function d_day_short(date) {
+function d_day_short(date, locale) {
   return locale.days[date.getDay()].slice(0, 3);
 }
 
-function d_day_long(date) {
+function d_day_long(date, locale) {
   return locale.days[date.getDay()];
 }
 
@@ -68,11 +66,11 @@ function d_month_two_digit(date) {
   return twoDigits(date.getMonth() + 1);
 }
 
-function d_month_short(date) {
+function d_month_short(date, locale) {
   return locale.months[date.getMonth()].slice(0, 3);
 }
 
-function d_month_long(date) {
+function d_month_long(date, locale) {
   return locale.months[date.getMonth()];
 }
 
@@ -81,10 +79,12 @@ function d_year(date) {
 }
 
 function factory(fnc) {
-  return function (date) {
+  return function (date, context) {
+    var locale = require('../util/locales')[context && context.get('lang') || defaultLanguage];
+
     if (!_.isDate(date)) date = new Date(date);
 
-    return fnc(date);
+    return fnc(date, locale);
   };
 }
 
