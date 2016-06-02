@@ -1,3 +1,5 @@
+'use strict';
+
 function pascalCase(value) {
   return _.upperFirst(_.camelCase(value));
 }

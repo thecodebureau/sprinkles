@@ -1,3 +1,5 @@
+'use strict';
+
 var localeString = ((typeof document !== 'undefined' ? document.documentElement.lang : process.env.NODE_LANG || LANG) || 'en').split('-')[0].toLowerCase();
 
 var locale = require('../util/locales')[localeString];
@@ -8,12 +10,12 @@ function twoDigits(val) {
 
 function d_datetime_long(date) {
   return _.compact([
-    locale.days[date.getDay()].slice(0,3),
+    locale.days[date.getDay()].slice(0, 3),
     date.getDate(),
     locale.months[date.getMonth()],
     date.getFullYear(),
     [ date.getHours(),
-      date.getMinutes() 
+      date.getMinutes()
     ].map(twoDigits).join(':'),
     date.tz && date.tz[0]
   ]).join(' ');
@@ -51,7 +53,7 @@ function d_day(date) {
 }
 
 function d_day_short(date) {
-  return locale.days[date.getDay()].slice(0,3);
+  return locale.days[date.getDay()].slice(0, 3);
 }
 
 function d_day_long(date) {
@@ -67,7 +69,7 @@ function d_month_two_digit(date) {
 }
 
 function d_month_short(date) {
-  return locale.months[date.getMonth()].slice(0,3);
+  return locale.months[date.getMonth()].slice(0, 3);
 }
 
 function d_month_long(date) {
@@ -79,8 +81,8 @@ function d_year(date) {
 }
 
 function factory(fnc) {
-  return function(date) {
-    if(!_.isDate(date)) date = new Date(date);
+  return function (date) {
+    if (!_.isDate(date)) date = new Date(date);
 
     return fnc(date);
   };

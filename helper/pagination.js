@@ -1,4 +1,6 @@
-module.exports = function(chunk, context) {
+'use strict';
+
+module.exports = function pagination(chunk, context) {
   var pages = [],
     count = context.get('totalCount'),
     query = context.get('query') || {},
@@ -14,8 +16,8 @@ module.exports = function(chunk, context) {
   //query = _.filter(query.split('&'), function(str) {
   //  return str.indexOf('page=') && _.last(str) != '=';
   //}).join('&');
-  
-  query = _.toPairs(_.omit(query, 'page')).map(function(arr) {
+
+  query = _.toPairs(_.omit(query, 'page')).map(function (arr) {
     return arr.map(encodeURIComponent).join('=');
   }).join('&');
 
@@ -34,8 +36,10 @@ module.exports = function(chunk, context) {
     pages[page].current = true;
 
   return {
-    firstIndex: Math.min(page * perPage + 1, count),// min is for when totalCount is 0
-    lastIndex: Math.min((page + 1) * perPage, count),// min is for last (not full) page
+    // min is for when totalCount is 0
+    firstIndex: Math.min(page * perPage + 1, count),
+    // min is for last (not full) page
+    lastIndex: Math.min((page + 1) * perPage, count),
     pages: pages,
     prev: _.extend(pages[page - 1], { rel: 'prev' }),
     next: _.extend(pages[page + 1], { rel: 'next' }),
