@@ -1,26 +1,26 @@
 function pascalCase(value) {
-	return _.upperFirst(_.camelCase(value));
+  return _.upperFirst(_.camelCase(value));
 }
 
 module.exports = {
-	camelCase: _.camelCase,
-	cc: _.camelCase,
+  camelCase: _.camelCase,
+  cc: _.camelCase,
 
-	pascalCase: pascalCase,
-	pc: pascalCase,
+  pascalCase: pascalCase,
+  pc: pascalCase,
 
-	kebabCase: _.kebabCase,
-	kc: _.kebabCase,
+  kebabCase: _.kebabCase,
+  kc: _.kebabCase,
 
-	lowerCase: _.lowerCase,
-	lc: _.lowerCase,
+  lowerCase: _.lowerCase,
+  lc: _.lowerCase,
 
-	upperCase: _.upperCase,
-	uc: _.upperCase,
+  upperCase: _.upperCase,
+  uc: _.upperCase,
 
-	snakeCase: _.snakeCase,
-	sc: _.snakeCase,
+  snakeCase: _.snakeCase,
+  sc: _.snakeCase,
 
-	startsCase: _.startsCase,
-	Sc: _.startsCase,
+  startsCase: _.startsCase,
+  Sc: _.startsCase,
 };
